@@ -8,7 +8,7 @@
           {{ block.sectionDivider }}
         </div>
       </div>
-      <div class="section-container lg:w-1/2 2xl:w-2/6 mx-auto !my-0">
+      <div class="section-container lg:w-1/2 2xl:w-2/6 mx-auto !my-0 px-6">
         <h1
           v-if="block.sectionTitle"
           class="text-3xl lg:text-4xl font-semibold">
@@ -20,7 +20,7 @@
           {{ block.sectionSubTitle }}
         </h3>
       </div>
-      <div class="section-container mx-auto lg:w-1/2 2xl:w-2/6 !my-0">
+      <div class="section-container mx-auto lg:w-1/2 2xl:w-2/6 !my-0 px-6">
         <img
           v-if="block.sectionImage"
           :src="block.sectionImage"
