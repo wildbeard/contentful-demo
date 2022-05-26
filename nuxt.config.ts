@@ -12,6 +12,9 @@ export default defineNuxtConfig({
       CONTENTFUL_ENVIRONMENT: 'master',
     },
   },
+  modules: [
+    '@nuxtjs/tailwindcss',
+  ],
   ssr: true,
   target: 'static',
 })

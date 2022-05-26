@@ -1,17 +1,34 @@
 <template>
-  <div class="container">
+  <div>
     <div v-for="(block, index) in blocks" :key="index">
-      <div v-if="block.sectionDivider" class="section-divider">
-        {{ block.sectionDivider }}
+      <div
+        v-if="block.sectionDivider"
+        class="section-divider w-full mt-8 mb-10 py-5 bg-primary text-center text-white text-3xl font-bold">
+        <div class="container mx-auto !my-0">
+          {{ block.sectionDivider }}
+        </div>
       </div>
-      <h1 v-if="block.sectionTitle">
-        {{ block.sectionTitle }}
-      </h1>
-      <h3 v-if="block.sectionSubTitle">
-        {{ block.sectionSubTitle }}
-      </h3>
-      <img v-if="block.sectionImage" :src="block.sectionImage">
-      <div v-if="block.html" v-html="block.html"></div>
+      <div class="section-container lg:w-1/2 2xl:w-2/6 mx-auto !my-0">
+        <h1
+          v-if="block.sectionTitle"
+          class="text-3xl lg:text-4xl font-semibold">
+          {{ block.sectionTitle }}
+        </h1>
+        <h3
+          v-if="block.sectionSubTitle"
+          class="text-3xl lg:text-3xl font-serif py-5">
+          {{ block.sectionSubTitle }}
+        </h3>
+      </div>
+      <div class="section-container mx-auto lg:w-1/2 2xl:w-2/6 !my-0">
+        <img
+          v-if="block.sectionImage"
+          :src="block.sectionImage"
+          class="w-full mb-6">
+        <div
+          v-if="block.html"
+          v-html="block.html"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +60,7 @@ const renderOpts = {
     [BLOCKS.EMBEDDED_ENTRY]: (node:Node) => {
       if (objectHasProperty(node.data.target.fields, 'buttonText')) {
         const { buttonText, buttonColor, buttonUrl } = node.data.target.fields;
-        return `<p class="text-center"><a href="${buttonUrl}" class="btn btn-${buttonColor}">${buttonText}</a></p>`;
+        return `<p class="text-center"><a href="${buttonUrl}" class="btn bg-${buttonColor}">${buttonText}</a></p>`;
       }
     },
   },
@@ -74,43 +91,27 @@ page.fields.sectionBlock.forEach((block) => {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-.container {
-  width: 800px;
-  margin: 50px auto 0;
-}
-.container img {
-  width: 100%;
-}
-.section-divider {
-  width: 100%;
-  margin: 25px 0;
-  padding: 10px 0;
-  font-size: 1.5rem;
-  color: white;
-  text-align: center;
-  background-color: blue;
+.content-container {
+  max-width: 1140px;
 }
 </style>
 <style>
 .btn {
-  padding: 18px 24px;
-  text-align: center;
-  text-decoration: none;
-  line-height: 1;
+  @apply inline-block text-white tracking-wider uppercase p-3.5;
 }
-.btn:hover,
-.btn:active,
-.btn:visited {
-  text-decoration: none;
+h2, h3 {
+  @apply font-serif;
 }
-.btn-orange {
-  color: white;
-  background-color: #ed6226;
+h2 > b {
+  @apply text-2xl font-light mb-4;
 }
-.text-center {
-  text-align: center;
+p {
+  @apply mb-4;
+}
+ol {
+  @apply list-decimal mt-4 pl-6;
+}
+.bg-orange {
+  @apply bg-danger;
 }
 </style>
