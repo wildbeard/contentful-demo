@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, Node } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { usePages } from '@@/composables/pages';
 
@@ -29,7 +29,7 @@ if (!pages.value.items.length) {
 }
 const page = pages.value.items.find(p => p.fields.slug === route.params.slug);
 
-const objectHasProperty = (obj, prop) => {
+const objectHasProperty = (obj:Object, prop:String): boolean => {
   const has = Object.prototype.hasOwnProperty;
   return has.call(obj, prop);
 };
@@ -40,7 +40,7 @@ const heir = {
 };
 const renderOpts = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+    [BLOCKS.EMBEDDED_ENTRY]: (node:Node) => {
       if (objectHasProperty(node.data.target.fields, 'buttonText')) {
         const { buttonText, buttonColor, buttonUrl } = node.data.target.fields;
         return `<p class="text-center"><a href="${buttonUrl}" class="btn btn-${buttonColor}">${buttonText}</a></p>`;
