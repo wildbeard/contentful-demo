@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-vue": "^9.0.1",
+    "nuxt": "3.0.0-rc.3"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^15.13.1",
+    "contentful": "^9.1.29",
+    "contentful-rich-text-vue-renderer": "^2.1.0"
+  }
+}
