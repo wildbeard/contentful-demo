@@ -1,5 +1,6 @@
 import { defineNuxtPlugin, useRuntimeConfig } from 'nuxt/app';
-import { createClient } from 'contentful';
+import c from 'contentful';
+const { createClient } = c;
 
 export default defineNuxtPlugin(() => {
   const rtConfig = useRuntimeConfig();

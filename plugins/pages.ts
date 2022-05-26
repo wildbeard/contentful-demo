@@ -1,6 +1,8 @@
-import { createClient } from 'contentful';
+// import { createClient } from 'contentful';
 import { defineNuxtPlugin, useRuntimeConfig } from 'nuxt/app';
+import c from 'contentful';
 import { usePages } from '../composables/pages';
+const { createClient } = c;
 
 export default defineNuxtPlugin(async () => {
   const rtConfig = useRuntimeConfig();

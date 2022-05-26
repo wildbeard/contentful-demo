@@ -25,7 +25,7 @@ const pages = usePages();
 const route = useRoute();
 
 if (!pages.value.items.length) {
-  console.log('no entries');
+  navigateTo('/');
 }
 const page = pages.value.items.find(p => p.fields.slug === route.params.slug);
 
